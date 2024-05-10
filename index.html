@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Cadastro de Cruzeiro</title>
+  <title>Documentos Necessários para o Contrato</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       background-color: #f0f0f0;
-      padding-top: 50px;
+      padding-top: 20px;
     }
 
     .container {
@@ -19,256 +19,94 @@
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
   </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.js"></script>
+
+
+
+  <form id="contractForm" method="post" action="processa_formulario.php">
+
+
 </head>
 
 <body>
   <div class="container">
-    <h2 class="text-center mb-4"><img src="" alt=""></h2>
-    <form id="cruiseForm">
+    <h2 class="text-center mb-5">Documentos Necessários para o Contrato</h2>
+    <form id="contractForm">
       <div class="row mb-3">
-        <div class="col-md-4">
-          <label for="nome">Nome:</label>
-          <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+        <div class="col-md-6">
+          <h3 class="text-center mb-4 mt-4">Esposo</h3>
+          <label for="esposoNome" class="form-label">Nome:</label>
+          <input type="text" class="form-control" id="esposoNome" required>
+          <label for="esposoRG" class="form-label mt-3">RG:</label>
+          <input type="text" class="form-control" id="esposoRG" placeholder="00.000.000-0" required>
+          <label for="esposoCPF" class="form-label mt-3">CPF:</label>
+          <input type="text" class="form-control" id="esposoCPF" placeholder="000.000.000.00" required>
+          <label for="esposoDataNasc" class="form-label mt-3">Data de Nascimento:</label>
+          <input type="date" class="form-control" id="esposoDataNasc" required>
+          <label for="esposoLocalNasc" class="form-label mt-3">Local de Nascimento:</label>
+          <input type="text" class="form-control" id="esposoLocalNasc" required>
+
         </div>
-        <div class="col-md-4">
-          <label for="email">E-mail:</label>
-          <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
-        </div>
-        <div class="col-md-4">
-          <label for="rg">RG:</label>
-          <input type="text" class="form-control" id="rg" placeholder="Digite seu RG" required>
+        <div class="col-md-6">
+          <h3 class="text-center mb-4 mt-4">Esposa</h3>
+          <label for="esposaNome" class="form-label">Nome:</label>
+          <input type="text" class="form-control" id="esposaNome" required>
+          <label for="esposaRG" class="form-label mt-3">RG:</label>
+          <input type="text" class="form-control" id="esposaRG" placeholder="00.000.000-0" required>
+          <label for="esposaCPF" class="form-label mt-3">CPF:</label>
+          <input type="text" class="form-control" id="esposaCPF" placeholder="000.000.000.00" required>
+          <label for="esposaDataNasc" class="form-label mt-3">Data de Nascimento:</label>
+          <input type="date" class="form-control" id="esposaDataNasc" required>
+          <label for="esposaLocalNasc" class="form-label mt-3">Local de Nascimento:</label>
+          <input type="text" class="form-control" id="esposaLocalNasc" required>
+
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <label for="cpf">CPF:</label>
-          <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF" required>
-        </div>
-        <div class="col-md-4">
-          <label for="telefone">Telefone:</label>
-          <input type="tel" class="form-control" id="telefone" placeholder="Digite seu telefone" required>
-        </div>
-        <div class="col-md-4">
-          <label for="estado">Estado:</label>
-          <select class="form-select" id="estado" required>
-            <option value="">Selecione seu estado</option>
-            <!-- Lista de estados -->
-            <option value="AC">Acre</option>
-            <option value="AL">Alagoas</option>
-            <option value="AP">Amapá</option>
-            <option value="AM">Amazonas</option>
-            <option value="BA">Bahia</option>
-            <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espírito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="MS">Mato Grosso do Sul</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PR">Paraná</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="RN">Rio Grande do Norte</option>
-            <option value="RS">Rio Grande do Sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option>
-            <option value="SP">São Paulo</option>
-            <option value="SE">Sergipe</option>
-            <option value="TO">Tocantins</option>
-          </select>
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-center mb-4 mt-4">Casal</h3>
+          <label for="casalDataNasc" class="form-label">Aniversário de Casamento:</label>
+          <input type="date" class="form-control" id="casalDataNasc" required>
+          <label for="endereco" class="form-label mt-3">Endereço:</label>
+          <input type="text" class="form-control" id="endereco" required>
+          <label for="cep" class="form-label mt-3">CEP:</label>
+          <input type="text" class="form-control" id="cep" required>
+          <label for="cidade" class="form-label mt-3">Cidade:</label>
+          <input type="text" class="form-control" id="cidade" required>
+          <label for="estado" class="form-label mt-3">Estado:</label>
+          <input type="text" class="form-control" id="estado" required>
+          <label for="email" class="form-label mt-3">E-mail:</label>
+          <input type="email" class="form-control" id="email" required>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label for="contatoEmergencia1" class="form-label">Contato de Emergência (Celular 1):</label>
+              <input type="text" class="form-control" id="contatoEmergencia1" required>
+            </div>
+            <div class="col-md-6">
+              <label for="contatoEmergencia2" class="form-label">Contato de Emergência (Celular 2):</label>
+              <input type="text" class="form-control" id="contatoEmergencia2" required>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <label for="cidade">Cidade:</label>
-          <input type="text" class="form-control" id="cidade" placeholder="Digite sua cidade" required>
-        </div>
-        <div class="col-md-4">
-          <label for="idade">Idade:</label>
-          <input type="number" class="form-control" id="idade" placeholder="Digite sua idade" required>
-        </div>
-        <div class="col-md-4">
-          <label for="tipo_cabine">Tipo de Cabine:</label>
-          <select class="form-select" id="tipo_cabine" required>
-            <option value="">Selecione o tipo de cabine</option>
-            <option value="externa">Externa</option>
-            <option value="varanda">Com Varanda</option>
-            <option value="interna">Interna</option>
-            <option value="suite">Suíte</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <label for="vip">Cliente VIP:</label>
-          <select class="form-select" id="vip" required>
-            <option value="">Selecione uma opção</option>
-            <option value="sim">Sim</option>
-            <option value="nao">Não</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label for="data_compra">Data da Compra:</label>
-          <input type="date" class="form-control" id="data_compra" required>
-        </div>
-        <div class="col-md-4">
-          <label for="aniversario_casamento">Aniversário de Casamento:</label>
-          <input type="date" class="form-control" id="aniversario_casamento" placeholder="Data de aniversário de casamento">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <label for="internet">Possui Internet:</label>
-          <select class="form-select" id="internet" required>
-            <option value="">Selecione uma opção</option>
-            <option value="sim">Sim</option>
-            <option value="nao">Não</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label for="pacote_bebidas">Possui Pacote de Bebidas:</label>
-          <select class="form-select" id="pacote_bebidas" required>
-            <option value="">Selecione uma opção</option>
-            <option value="sim">Sim</option>
-            <option value="nao">Não</option>
-          </select>
-        </div>
-      </div>
-      <div class="text-center">
+
+      <div class="text-center mt-4">
         <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </form>
   </div>
 
-  <div class="container mt-5" id="tableContainer" style="display:none;">
-    <h2 class="text-center mb-4">Informações do Cadastro</h2>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th scope="row">Nome:</th>
-          <td id="nameOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">E-mail:</th>
-          <td id="emailOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">RG:</th>
-          <td id="rgOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">CPF:</th>
-          <td id="cpfOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Telefone:</th>
-          <td id="phoneOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Estado:</th>
-          <td id="stateOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Cidade:</th>
-          <td id="cityOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Idade:</th>
-          <td id="ageOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Tipo de Cabine:</th>
-          <td id="cabinTypeOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Cliente VIP:</th>
-          <td id="vipOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Data da Compra:</th>
-          <td id="purchaseDateOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Aniversário de Casamento:</th>
-          <td id="weddingAnniversaryOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Possui Internet:</th>
-          <td id="internetOutput"></td>
-        </tr>
-        <tr>
-          <th scope="row">Possui Pacote de Bebidas:</th>
-          <td id="drinksPackageOutput"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
   <script>
-    document.getElementById('cruiseForm').addEventListener('submit', function (event) {
+    document.getElementById('contractForm').addEventListener('submit', function (event) {
       event.preventDefault();
-      displayTable();
+      // Aqui você pode adicionar a lógica para enviar o formulário ou realizar outras ações necessárias.
     });
-
-    function displayTable() {
-      document.getElementById('nameOutput').textContent = document.getElementById('nome').value;
-      document.getElementById('emailOutput').textContent = document.getElementById('email').value;
-      document.getElementById('rgOutput').textContent = document.getElementById('rg').value;
-      document.getElementById('cpfOutput').textContent = document.getElementById('cpf').value;
-      document.getElementById('phoneOutput').textContent = document.getElementById('telefone').value;
-      document.getElementById('stateOutput').textContent = document.getElementById('estado').value;
-      document.getElementById('cityOutput').textContent = document.getElementById('cidade').value;
-      document.getElementById('ageOutput').textContent = document.getElementById('idade').value;
-      document.getElementById('cabinTypeOutput').textContent = document.getElementById('tipo_cabine').value;
-      document.getElementById('vipOutput').textContent = document.getElementById('vip').value;
-      document.getElementById('purchaseDateOutput').textContent = document.getElementById('data_compra').value;
-      document.getElementById('weddingAnniversaryOutput').textContent = document.getElementById('aniversario_casamento').value;
-      document.getElementById('internetOutput').textContent = document.getElementById('internet').value;
-      document.getElementById('drinksPackageOutput').textContent = document.getElementById('pacote_bebidas').value;
-
-      document.getElementById('tableContainer').style.display = 'block';
-    }
   </script>
-
-  <!-- Botão de exportação -->
-  <div class="text-center mt-3">
-    <button type="button" class="btn btn-success" onclick="exportTable()">Exportar Tabela</button>
-  </div>
-
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-  <script>
-    function exportTable() {
-      // Obter os dados da tabela
-      var tableData = [];
-      var rows = document.querySelectorAll("#tableContainer table tbody tr");
-      rows.forEach(function (row) {
-        var rowData = [];
-        row.querySelectorAll("td").forEach(function (cell) {
-          rowData.push(cell.textContent);
-        });
-        tableData.push(rowData.join(","));
-      });
-
-      // Criar um link de download para o arquivo CSV
-      var csvContent = "data:text/csv;charset=utf-8," + tableData.join("\n");
-      var encodedUri = encodeURI(csvContent);
-      var link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "cadastros.csv");
-      document.body.appendChild(link);
-
-      // Simular o clique no link de download
-      link.click();
-    }
-  </script>
 
 </body>
 
