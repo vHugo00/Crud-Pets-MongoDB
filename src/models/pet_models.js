@@ -6,6 +6,11 @@ const petSchema = new Schema({
   nome: {
     type: String,
     required: true
+  },
+  clienteId: {
+    type: String,
+    ref: 'Cliente',
+    required: true
   }
 });
 

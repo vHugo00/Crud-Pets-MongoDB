@@ -1,7 +1,13 @@
 const Pet = require('../models/pet_models');
+const Cliente = require('../models/cliente_models');
 
 exports.createPet = async (req, res) => {
   try {
+    const cliente = await Cliente.findById(req.body.clienteId);
+    if (!cliente) {
+      return res.status(404).json({ error: 'Cliente não encontrado' });
+    }
+
     const pet = new Pet(req.body);
     await pet.save();
     res.status(201).json(pet);
